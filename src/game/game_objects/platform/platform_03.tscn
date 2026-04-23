@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ds3tmvg4w08ob"]
+
+[ext_resource type="PackedScene" uid="uid://ccfvxncm4m68d" path="res://src/game/game_objects/platform/platform.tscn" id="1_mxduh"]
+[ext_resource type="Texture2D" uid="uid://bxhktvqs2sf1w" path="res://assets/PNG/OtherAssets/Platformer3.png" id="2_bdnex"]
+
+[node name="Platform01" unique_id=450385969 instance=ExtResource("1_mxduh")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=579962521]
+position = Vector2(-10, 0)
+texture = ExtResource("2_bdnex")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=2035826218]
+position = Vector2(66.5, 4)

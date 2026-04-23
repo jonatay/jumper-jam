@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d16jqmf6lbnu7"]
+
+[ext_resource type="Script" uid="uid://c7ke1xdsoklce" path="res://src/game/game.gd" id="1_l1rk1"]
+[ext_resource type="PackedScene" uid="uid://ca42a6h7a0ks7" path="res://src/game/game_objects/camera/game_camera.tscn" id="2_l80un"]
+[ext_resource type="PackedScene" uid="uid://cjqcnjk0c1ms5" path="res://src/game/game_objects/player/player.tscn" id="2_s6lek"]
+[ext_resource type="Script" uid="uid://bwuw6tmdkk8m4" path="res://src/game/game_objects/platform/platforms.gd" id="4_xptat"]
+[ext_resource type="PackedScene" uid="uid://fi6u7h1u70hx" path="res://src/game/game_objects/platform/platform_01.tscn" id="5_clwl7"]
+[ext_resource type="PackedScene" uid="uid://bp805t80vimda" path="res://src/game/game_objects/platform/platform_02.tscn" id="6_7r0dx"]
+[ext_resource type="PackedScene" uid="uid://ds3tmvg4w08ob" path="res://src/game/game_objects/platform/platform_03.tscn" id="7_htx8b"]
+[ext_resource type="PackedScene" uid="uid://e64cncqsq75t" path="res://src/game/game_objects/platform/platform_04.tscn" id="8_ueio8"]
+[ext_resource type="PackedScene" uid="uid://kstu3q3yjl60" path="res://src/game/game_objects/platform/platform_05.tscn" id="9_etvrb"]
+[ext_resource type="PackedScene" uid="uid://c61vne7qm0fr6" path="res://src/game/game_objects/platform/platform_06.tscn" id="10_xniy2"]
+
+[node name="Game" type="Node2D" unique_id=1953146400]
+script = ExtResource("1_l1rk1")
+
+[node name="GameCamera" parent="." unique_id=775189225 node_paths=PackedStringArray("player") instance=ExtResource("2_l80un")]
+limit_left = 0
+limit_right = 540
+limit_bottom = 960
+player = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=1389800421 instance=ExtResource("2_s6lek")]
+position = Vector2(200, 758)
+
+[node name="Platforms" type="Node2D" parent="." unique_id=638751967 node_paths=PackedStringArray("player")]
+script = ExtResource("4_xptat")
+player = NodePath("../Player")
+platform_scenes = Array[PackedScene]([ExtResource("5_clwl7"), ExtResource("6_7r0dx"), ExtResource("7_htx8b"), ExtResource("8_ueio8"), ExtResource("9_etvrb"), ExtResource("10_xniy2")])

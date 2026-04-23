@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cpyhiaifdcwyl"]
+
+[ext_resource type="Script" uid="uid://cdqpvrn7p50mj" path="res://src/screens/screens.gd" id="1_mmeda"]
+
+[node name="Screens" type="CanvasLayer" unique_id=2144420571]
+script = ExtResource("1_mmeda")

@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://cjqcnjk0c1ms5"]
+
+[ext_resource type="Script" uid="uid://clwcch4nb7auu" path="res://src/game/game_objects/player/player.gd" id="1_7np03"]
+[ext_resource type="Texture2D" uid="uid://dlvn88tw06j43" path="res://assets/PNG/Characters/01/Idle.png" id="1_gxmba"]
+[ext_resource type="Texture2D" uid="uid://bdf81kj786ixy" path="res://assets/PNG/Characters/01/Jump.png" id="3_ro4s1"]
+[ext_resource type="FontFile" uid="uid://bm0l1l545ccj7" path="res://assets/font/Wendy_One/WendyOne-Regular.ttf" id="4_ro4s1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0dmo"]
+size = Vector2(38, 14)
+
+[sub_resource type="Animation" id="Animation_iydti"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_gxmba")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -46)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+
+[sub_resource type="Animation" id="Animation_nle2e"]
+resource_name = "fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_gxmba")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -46)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+
+[sub_resource type="Animation" id="Animation_sfn61"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_ro4s1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -49)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.35, 0.35)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y50ah"]
+_data = {
+&"RESET": SubResource("Animation_iydti"),
+&"fall": SubResource("Animation_nle2e"),
+&"jump": SubResource("Animation_sfn61")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_m0dmo"]
+font = ExtResource("4_ro4s1")
+
+[node name="Player" type="CharacterBody2D" unique_id=1389800421]
+collision_mask = 2
+script = ExtResource("1_7np03")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1481226596]
+z_index = 10
+position = Vector2(0, -46)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_gxmba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=489627380]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_m0dmo")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2119362468]
+libraries/ = SubResource("AnimationLibrary_y50ah")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=511297943]
+
+[node name="DiagLabel" type="Label" parent="Node2D" unique_id=509922504]
+offset_left = -47.0
+offset_top = -134.0
+offset_right = 47.500008
+offset_bottom = -102.320015
+size_flags_vertical = 1
+text = "Woe is me"
+label_settings = SubResource("LabelSettings_m0dmo")
+horizontal_alignment = 1
+vertical_alignment = 1

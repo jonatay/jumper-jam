@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://kstu3q3yjl60"]
+
+[ext_resource type="PackedScene" uid="uid://ccfvxncm4m68d" path="res://src/game/game_objects/platform/platform.tscn" id="1_aubka"]
+[ext_resource type="Texture2D" uid="uid://sm5v6g3wnhdd" path="res://assets/PNG/OtherAssets/Platformer5.png" id="2_hyukk"]
+
+[node name="Platform01" unique_id=450385969 instance=ExtResource("1_aubka")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=579962521]
+position = Vector2(-11, 0)
+texture = ExtResource("2_hyukk")

@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://doql8naphwala"]
+
+[ext_resource type="FontFile" uid="uid://bm0l1l545ccj7" path="res://assets/font/Wendy_One/WendyOne-Regular.ttf" id="1_ounfi"]
+
+[resource]
+default_font = ExtResource("1_ounfi")
