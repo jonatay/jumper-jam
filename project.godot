@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="jumper-jam"
-run/main_scene="uid://d16jqmf6lbnu7"
+run/main_scene="uid://ucd76hrrynhg"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+UtlLogger="*uid://qrtafxieycd"
 
 [display]
 
@@ -24,6 +28,10 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_width"
 window/handheld/orientation=1
 window/vsync/vsync_mode=0
+
+[global_group]
+
+console_log=""
 
 [input]
 
@@ -52,6 +60,7 @@ reset={
 
 [input_devices]
 
+sensors/enable_accelerometer=true
 pointing/emulate_touch_from_mouse=true
 
 [layer_names]
@@ -68,3 +77,4 @@ pointing/emulate_touch_from_mouse=true
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

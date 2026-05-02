@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ct3toyphttn1q"]
+
+[ext_resource type="Script" uid="uid://h5cjt8no76bq" path="res://src/screens/screen_button.gd" id="1_amowj"]
+
+[node name="ScreenButton" type="TextureButton" unique_id=1033950081]
+script = ExtResource("1_amowj")

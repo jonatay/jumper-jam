@@ -1,6 +1,92 @@
 [gd_scene format=3 uid="uid://cpyhiaifdcwyl"]
 
 [ext_resource type="Script" uid="uid://cdqpvrn7p50mj" path="res://src/screens/screens.gd" id="1_mmeda"]
+[ext_resource type="PackedScene" uid="uid://b0cig83fwixxc" path="res://src/screens/pause_screen.tscn" id="2_afsso"]
+[ext_resource type="Texture2D" uid="uid://dljbtmf1cdcnq" path="res://assets/textures/ui/gear.png" id="2_hie14"]
+[ext_resource type="PackedScene" uid="uid://dll8n75yhot40" path="res://src/screens/title_screen.tscn" id="3_5o4du"]
+[ext_resource type="PackedScene" uid="uid://dt0lbsfvjv5mv" path="res://src/screens/game_over_screen.tscn" id="4_robo6"]
 
 [node name="Screens" type="CanvasLayer" unique_id=2144420571]
 script = ExtResource("1_mmeda")
+
+[node name="PauseScreen" parent="." unique_id=816577384 instance=ExtResource("2_afsso")]
+
+[node name="TitleScreen" parent="." unique_id=575566824 instance=ExtResource("3_5o4du")]
+visible = false
+
+[node name="GameOver" parent="." unique_id=1411894215 instance=ExtResource("4_robo6")]
+
+[node name="Debug" type="Control" parent="." unique_id=30307900]
+visible = false
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ConsoleLog" type="Control" parent="Debug" unique_id=1620022150 groups=["console_log"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackBG" type="ColorRect" parent="Debug/ConsoleLog" unique_id=1921013006]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6666667)
+
+[node name="LblBldNbr" type="Label" parent="Debug/ConsoleLog" unique_id=599594864]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+text = "build 0.1.0"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Debug/ConsoleLog" unique_id=248265549]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 42.0
+offset_right = -14.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug/ConsoleLog/ScrollContainer" unique_id=1112063638]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LblLog" type="Label" parent="Debug/ConsoleLog/ScrollContainer/VBoxContainer" unique_id=1378024063]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+text = "Test Log 1
+Test Log 1
+Test Log 1
+Test Log 1"
+autowrap_mode = 3
+
+[node name="BtnToggleConsole" type="TextureButton" parent="Debug" unique_id=797175702]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 100.0
+offset_bottom = 60.0
+grow_vertical = 0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("2_hie14")

@@ -1,6 +1,11 @@
 extends Node2D
 
-@onready var platforms: Node2D = $Platforms
+@onready var ground_sprite: Sprite2D = $GroundSprite
+@onready var viewport_size := get_viewport_rect().size
+
+
+func _ready() -> void:
+	ground_sprite.position = Vector2(viewport_size.x / 2.0, viewport_size.y - (ground_sprite.texture.get_size().y * ground_sprite.scale.y) / 2.0)
 
 
 func _process(_delta: float) -> void:

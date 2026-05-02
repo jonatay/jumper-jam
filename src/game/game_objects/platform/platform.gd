@@ -9,6 +9,6 @@ func _ready() -> void:
 func _body_entered(body: Node) -> void:
 	if (body is Player) && (body.velocity.y > 0):
 		(body as Player).jump()
-		bounce_count += 1
+		# bounce_count += 1
 		if bounce_count > 1:
 			queue_free()
