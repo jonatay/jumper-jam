@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dll8n75yhot40"]
 
+[ext_resource type="Script" uid="uid://84eqkymct0xh" path="res://src/screens/base_screen.gd" id="1_dm05p"]
 [ext_resource type="Texture2D" uid="uid://cmny4sqjwwct5" path="res://assets/PNG/Ui/BigLogo.png" id="1_eritd"]
 [ext_resource type="PackedScene" uid="uid://ct3toyphttn1q" path="res://src/screens/screen_button.tscn" id="2_m68dr"]
 [ext_resource type="Texture2D" uid="uid://bpwtgotsdp58o" path="res://assets/textures/ui/PlayBtn.png" id="3_dm05p"]
@@ -9,7 +10,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anchor/ScreenButton:position")
+tracks/0/path = NodePath("Anchor/SBTitleStart:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -26,7 +27,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Anchor/ScreenButton:position")
+tracks/0/path = NodePath("Anchor/SBTitleStart:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,19 +43,22 @@ _data = {
 &"btn_bounce": SubResource("Animation_dm05p")
 }
 
-[node name="TitleScreen" type="Control" unique_id=575566824]
+[node name="TitleScreen" type="Control" unique_id=105946204]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_dm05p")
+metadata/_custom_type_script = "uid://84eqkymct0xh"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=401949478]
 libraries/ = SubResource("AnimationLibrary_g651y")
 autoplay = &"btn_bounce"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=726915885]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -93,7 +97,7 @@ grow_vertical = 2
 texture = ExtResource("1_eritd")
 expand_mode = 1
 
-[node name="ScreenButton" parent="Anchor" unique_id=1033950081 instance=ExtResource("2_m68dr")]
+[node name="SBTitleStart" parent="Anchor" unique_id=1033950081 instance=ExtResource("2_m68dr")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -1,23 +1,25 @@
 [gd_scene format=3 uid="uid://dt0lbsfvjv5mv"]
 
+[ext_resource type="Script" uid="uid://84eqkymct0xh" path="res://src/screens/base_screen.gd" id="1_1dgrh"]
 [ext_resource type="Texture2D" uid="uid://cxbggw2gy5cmk" path="res://assets/PNG/Ui/Box04.png" id="1_e37j5"]
 [ext_resource type="Texture2D" uid="uid://pcw7n0v13qem" path="res://assets/PNG/Ui/Welldone.png" id="2_1dgrh"]
 [ext_resource type="PackedScene" uid="uid://ct3toyphttn1q" path="res://src/screens/screen_button.tscn" id="3_02vxw"]
 [ext_resource type="Texture2D" uid="uid://c6t3l0l8u63na" path="res://assets/PNG/Ui/RestartBtn.png" id="4_gnq56"]
 [ext_resource type="Texture2D" uid="uid://byxgw1jvvt4d1" path="res://assets/PNG/Ui/menuBtn.png" id="5_m0jga"]
-[ext_resource type="Texture2D" uid="uid://cr4osoxhrn6jy" path="res://assets/PNG/Ui/Closebtn.png" id="6_ju1ea"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_02vxw"]
 font_size = 30
 font_color = Color(0, 0, 0, 1)
 
-[node name="GameOver" type="Control" unique_id=1411894215]
+[node name="GameOver" type="Control" unique_id=906435200]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1dgrh")
+metadata/_custom_type_script = "uid://84eqkymct0xh"
 
 [node name="BlackBG" type="ColorRect" parent="." unique_id=64166940]
 layout_mode = 1
@@ -92,7 +94,7 @@ grow_vertical = 2
 text = "Best: 999,999,999"
 label_settings = SubResource("LabelSettings_02vxw")
 
-[node name="SBPauseRestart" parent="Box" unique_id=1033950081 instance=ExtResource("3_02vxw")]
+[node name="SBGameOverRestart" parent="Box" unique_id=1033950081 instance=ExtResource("3_02vxw")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -109,7 +111,7 @@ texture_normal = ExtResource("4_gnq56")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="SBPauseBack" parent="Box" unique_id=198467814 instance=ExtResource("3_02vxw")]
+[node name="SBGameOverBack" parent="Box" unique_id=198467814 instance=ExtResource("3_02vxw")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -123,22 +125,5 @@ offset_bottom = 198.5
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("5_m0jga")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="SBPauseClose" parent="Box" unique_id=1475354637 instance=ExtResource("3_02vxw")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 162.0
-offset_top = -237.5
-offset_right = 214.12122
-offset_bottom = -187.5
-grow_horizontal = 2
-grow_vertical = 2
-texture_normal = ExtResource("6_ju1ea")
 ignore_texture_size = true
 stretch_mode = 0

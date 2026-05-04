@@ -1,15 +1,66 @@
 extends Node2D
+class_name Game
 
+signal game_over(score: int, high_score: int)
+
+@export var player_scene: PackedScene
+@export var camera_scene: PackedScene
+
+
+@onready var platforms: Platforms = $Platforms
 @onready var ground_sprite: Sprite2D = $GroundSprite
 @onready var viewport_size := get_viewport_rect().size
+@onready var hud: Control = $UILayer/HUD
 
+var player: Player
+var camera: GameCamera
+
+var player_spawn_pos: Vector2
+var spawn_pos_y_offset := 135
 
 func _ready() -> void:
 	ground_sprite.position = Vector2(viewport_size.x / 2.0, viewport_size.y - (ground_sprite.texture.get_size().y * ground_sprite.scale.y) / 2.0)
-
+	player_spawn_pos = Vector2(viewport_size.x / 2.0, viewport_size.y - spawn_pos_y_offset)
+	hud.hide()
+	# start_game()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
+
+func new_game() -> void:
+	player = player_scene.instantiate()
+	add_child(player)
+	player.player_died.connect(on_player_died)
+	platforms.player = player
+	camera = camera_scene.instantiate()
+	camera.player = player
+	add_child(camera)
+	start_game()
+
+func start_game() -> void:
+	player.ressurect()
+	player.position = player_spawn_pos
+	platforms.start_level_generation()
+	camera.reset_camera()
+	hud.show()
+	ground_sprite.show()
+
+func reset_game() -> void:
+	platforms.reset_level()
+	if player:
+		player.queue_free()
+		player = null
+		platforms.player = null
+	if camera:
+		camera.queue_free()
+		camera = null
+	ground_sprite.hide()
+
+func on_player_died() -> void:
+	hud.hide()
+	game_over.emit(player.position.y, 0) # TODO: score and high score
+	# player.queue_free()
+	# camera.queue_free()

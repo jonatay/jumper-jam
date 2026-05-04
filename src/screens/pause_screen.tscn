@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b0cig83fwixxc"]
 
+[ext_resource type="Script" uid="uid://84eqkymct0xh" path="res://src/screens/base_screen.gd" id="1_hyf1a"]
 [ext_resource type="Texture2D" uid="uid://onll750wprab" path="res://assets/PNG/Ui/Box02.png" id="1_kgdii"]
 [ext_resource type="Texture2D" uid="uid://3h8rao6i4aog" path="res://assets/PNG/Ui/PausedText.png" id="2_5q1vq"]
 [ext_resource type="PackedScene" uid="uid://ct3toyphttn1q" path="res://src/screens/screen_button.tscn" id="3_11avk"]
@@ -7,13 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://byxgw1jvvt4d1" path="res://assets/PNG/Ui/menuBtn.png" id="5_hyf1a"]
 [ext_resource type="Texture2D" uid="uid://cr4osoxhrn6jy" path="res://assets/PNG/Ui/Closebtn.png" id="6_4cjav"]
 
-[node name="PauseScreen" type="Control" unique_id=1411894215]
+[node name="PauseScreen" type="Control" unique_id=388198600]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hyf1a")
+metadata/_custom_type_script = "uid://84eqkymct0xh"
 
 [node name="BlackBG" type="ColorRect" parent="." unique_id=64166940]
 layout_mode = 1

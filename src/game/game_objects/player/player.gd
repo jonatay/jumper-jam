@@ -1,10 +1,12 @@
 extends CharacterBody2D
 class_name Player
 
+signal player_died
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var viewport_size := get_viewport_rect().size
 @onready var diag_label: Label = $Node2D/DiagLabel
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 @export var margin: int = 20
 @export var speed: float = 300.0
@@ -14,6 +16,8 @@ class_name Player
 @export var jump_velocity: float = -800.0
 
 var use_acceletometer: bool = false
+var dead: bool = false
+
 
 func _ready() -> void:
 	var os_name = OS.get_name()
@@ -29,19 +33,20 @@ func _process(_delta: float) -> void:
 			animation_player.play("fall")
 
 func _physics_process(_delta: float) -> void:
-	if use_acceletometer:
-		var accel_vector := Input.get_accelerometer()
-		print(accel_vector)
-		velocity.x = accel_vector.x * accelerometer_speed
-	else:
-		var input_vector := Input.get_axis("move_left", "move_right")
-		if input_vector:
-			velocity.x = input_vector * speed
+	if !dead:
+		if use_acceletometer:
+			var accel_vector := Input.get_accelerometer()
+			#print(accel_vector)
+			velocity.x = accel_vector.x * accelerometer_speed
 		else:
-			velocity.x = move_toward(velocity.x, 0, speed)
+			var input_vector := Input.get_axis("move_left", "move_right")
+			if input_vector:
+				velocity.x = input_vector * speed
+			else:
+				velocity.x = move_toward(velocity.x, 0, speed)
 
-	#gravity
-	velocity.y = min(velocity.y + gravity, max_fall_velocity)
+		#gravity
+		velocity.y = min(velocity.y + gravity, max_fall_velocity)
 
 	move_and_slide()
 
@@ -51,23 +56,24 @@ func _physics_process(_delta: float) -> void:
 	elif position.x > viewport_size.x + margin:
 		position.x = - margin
 
-	diag_label.text = "Y: %s" % add_commas_to_number(int(-position.y))
+	# diag_label.text = "Y: %s" % UtlFunc.add_commas_to_number(int(-position.y))
 
 
 func jump() -> void:
 	velocity.y = jump_velocity
-	UtlLogger.log_message("Jumped! Current height: %s" % add_commas_to_number(int(-position.y)))
+	UtlLogger.log_message("Jumped! Current height: %s" % UtlFunc.add_commas_to_number(int(-position.y)))
 
-func add_commas_to_number(input_number: int) -> String:
-	var number_as_string: String = str(input_number)
-	var output_string: String = ""
-	var last_index: int = number_as_string.length() - 1
-	#For each digit in the number...
-	for index in range(number_as_string.length()):
-		#add that digit to the output string, and then...
-		output_string = output_string + number_as_string.substr(index, 1)
-		#if the index is at the thousandths, millions, billionths place, etc.
-		#i.e. where you would put a comma, then insert a comma after that digit.
-		if (last_index - index) % 3 == 0 and index != last_index:
-			output_string = output_string + ","
-	return output_string
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	die()
+
+
+func die() -> void:
+	if not dead:
+		dead = true
+		collision_shape_2d.set_deferred("disabled", true)
+		player_died.emit()
+
+func ressurect() -> void:
+	dead = false
+	collision_shape_2d.disabled = false

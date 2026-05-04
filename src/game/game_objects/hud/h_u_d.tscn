@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dpnnu1u5cgdng"]
+
+[ext_resource type="Texture2D" uid="uid://dbel60q4g3wt0" path="res://assets/PNG/Ui/ScoreBox.png" id="1_33l8k"]
+[ext_resource type="Script" uid="uid://4v5wntv3t7i5" path="res://src/game/game_objects/hud/h_u_d.gd" id="1_rvych"]
+[ext_resource type="Texture2D" uid="uid://5cwi62nsbih3" path="res://assets/PNG/Ui/PauseBtn.png" id="2_rvych"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rvych"]
+font_size = 36
+font_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="Control" unique_id=1087432802]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rvych")
+
+[node name="TopBarBG" type="ColorRect" parent="." unique_id=279577244]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 0.4509804)
+
+[node name="TopBar" type="Control" parent="." unique_id=1540567980]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 90.0
+grow_horizontal = 2
+
+[node name="ScoreBox" type="TextureRect" parent="TopBar" unique_id=653163566]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 5.0
+offset_right = 314.93234
+offset_bottom = 85.0
+texture = ExtResource("1_33l8k")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TopBar/ScoreBox" unique_id=1504883183]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 24.0
+offset_right = 271.0
+offset_bottom = 74.0
+text = "999,999,999"
+label_settings = SubResource("LabelSettings_rvych")
+horizontal_alignment = 2
+
+[node name="TBHUDPause" type="TextureButton" parent="TopBar" unique_id=445310565]
+layout_mode = 0
+offset_left = 448.0
+offset_right = 540.0
+offset_bottom = 89.0
+texture_normal = ExtResource("2_rvych")
+stretch_mode = 3
+
+[connection signal="pressed" from="TopBar/TBHUDPause" to="." method="_on_tbhud_pause_pressed"]

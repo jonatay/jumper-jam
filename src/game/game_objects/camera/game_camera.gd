@@ -1,6 +1,7 @@
 extends Camera2D
+class_name GameCamera
 
-@export var player: Player
+var player: Player
 
 @onready var vp_rect := get_viewport_rect()
 @onready var y_offset: float = vp_rect.size.y / 2
@@ -8,7 +9,7 @@ extends Camera2D
 var y_min: float = 0.0
 
 func _ready() -> void:
-	assert(player != null, "Player node must be assigned to the camera.")
+	#assert(player != null, "Player node must be assigned to the camera.")
 	global_position.x = 0
 	
 func _physics_process(_delta: float) -> void:
@@ -17,3 +18,7 @@ func _physics_process(_delta: float) -> void:
 	#ensure camera is climbing with player
 	if global_position.y < y_min + y_offset:
 		y_min = global_position.y
+
+func reset_camera() -> void:
+	global_position = Vector2(0, 0)
+	y_min = 0.0

@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://bke0ib8jsorg2" path="res://src/game/background_px.gd" id="2_80fip"]
 [ext_resource type="PackedScene" uid="uid://ca42a6h7a0ks7" path="res://src/game/game_objects/camera/game_camera.tscn" id="2_l80un"]
 [ext_resource type="PackedScene" uid="uid://cjqcnjk0c1ms5" path="res://src/game/game_objects/player/player.tscn" id="2_s6lek"]
-[ext_resource type="Script" uid="uid://d0dqb307v5uok" path="res://src/game/destroyer.gd" id="3_7r0dx"]
 [ext_resource type="Script" uid="uid://bwuw6tmdkk8m4" path="res://src/game/game_objects/platform/platforms.gd" id="4_xptat"]
 [ext_resource type="PackedScene" uid="uid://fi6u7h1u70hx" path="res://src/game/game_objects/platform/platform_01.tscn" id="5_clwl7"]
 [ext_resource type="PackedScene" uid="uid://bp805t80vimda" path="res://src/game/game_objects/platform/platform_02.tscn" id="6_7r0dx"]
@@ -16,9 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://o3ufaijj4cni" path="res://assets/PNG/Background/06/Layer1.png" id="13_xniy2"]
 [ext_resource type="Texture2D" uid="uid://b2c7r7jgikf5d" path="res://assets/PNG/Background/06/Layer2.png" id="14_80fip"]
 [ext_resource type="Texture2D" uid="uid://osbxcdid6a5h" path="res://assets/PNG/Background/06/Layer3.png" id="15_cvpot"]
+[ext_resource type="PackedScene" uid="uid://dpnnu1u5cgdng" path="res://src/game/game_objects/hud/h_u_d.tscn" id="17_cvpot"]
 
 [node name="Game" type="Node2D" unique_id=1953146400]
 script = ExtResource("1_l1rk1")
+player_scene = ExtResource("2_s6lek")
+camera_scene = ExtResource("2_l80un")
 
 [node name="BackgroundPX" type="Node2D" parent="." unique_id=592799698]
 y_sort_enabled = true
@@ -57,26 +59,15 @@ repeat_times = 3
 texture = ExtResource("15_cvpot")
 centered = false
 
-[node name="GameCamera" parent="." unique_id=775189225 node_paths=PackedStringArray("player") instance=ExtResource("2_l80un")]
-limit_left = 0
-limit_right = 540
-limit_bottom = 960
-player = NodePath("../Player")
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=423615139]
+layer = 10
 
-[node name="Destroyer" type="Area2D" parent="GameCamera" unique_id=741176389]
-collision_layer = 0
-collision_mask = 3
-script = ExtResource("3_7r0dx")
+[node name="HUD" parent="UILayer" unique_id=1930049177 instance=ExtResource("17_cvpot")]
+offset_left = -2.0
+offset_right = -2.0
 
-[node name="DestroyerShape" type="CollisionShape2D" parent="GameCamera/Destroyer" unique_id=305952524]
-debug_color = Color(0.5529412, 0.19607843, 0.23921569, 0.41960785)
-
-[node name="Player" parent="." unique_id=1389800421 instance=ExtResource("2_s6lek")]
-position = Vector2(267, 827)
-
-[node name="Platforms" type="Node2D" parent="." unique_id=638751967 node_paths=PackedStringArray("player")]
+[node name="Platforms" type="Node2D" parent="." unique_id=638751967]
 script = ExtResource("4_xptat")
-player = NodePath("../Player")
 platform_scenes = Array[PackedScene]([ExtResource("5_clwl7"), ExtResource("6_7r0dx"), ExtResource("7_htx8b"), ExtResource("8_ueio8"), ExtResource("9_etvrb"), ExtResource("10_xniy2")])
 
 [node name="GroundSprite" type="Sprite2D" parent="." unique_id=1689404751]

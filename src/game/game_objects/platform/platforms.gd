@@ -1,7 +1,7 @@
 extends Node2D
 class_name Platforms
 
-@export var player: Player
+var player: Player
 @export var platform_scenes: Array[PackedScene]
 @export var y_platform_spacing: int = 150
 @export var platform_x_range: int = 200
@@ -11,22 +11,32 @@ class_name Platforms
 @onready var start_platform_y: float = viewport_size.y - (y_platform_spacing * 2.0)
 
 var platform_width: int = 134
+
 var platform_counter: int = 0
 var levels_counter: int = 0
 var level_idx: int = 0
 
-func _ready() -> void:
-	assert(player != null, "Player node must be assigned.")
-	assert(platform_scenes.size() > 0, "At least one platform scene must be assigned.")
+func _process(_delta: float) -> void:
+	if player:
+		var existing_size := levels_counter * y_platform_spacing * level_size
+		if player.position.y < start_platform_y - (existing_size) + viewport_size.y:
+			level_idx += 1
+			if level_idx >= platform_scenes.size():
+				level_idx = 0
+			generate_level_platforms(level_idx)
+
+func start_level_generation() -> void:
 	generate_ground_platforms(level_idx)
 	generate_level_platforms(level_idx)
 
-func _process(_delta: float) -> void:
-	if player.position.y < start_platform_y - (levels_counter * y_platform_spacing * level_size) + viewport_size.y:
-		level_idx += 1
-		if level_idx >= platform_scenes.size():
-			level_idx = 0
-		generate_level_platforms(level_idx)
+func reset_level() -> void:
+	platform_counter = 0
+	levels_counter = 0
+	level_idx = 0
+	for child in get_children():
+		if child is Platform:
+			child.queue_free()
+
 
 func generate_ground_platforms(platform_idx: int) -> void:
 	for x in range(- (platform_width + 2), int(viewport_size.x) + (platform_width + 2), platform_width + 2):
