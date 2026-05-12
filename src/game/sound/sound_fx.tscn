@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://blkr3qnjalvsl"]
+
+[ext_resource type="Script" uid="uid://cmtmuuhrbxwdn" path="res://src/game/sound/sound_fx.gd" id="1_kan5h"]
+[ext_resource type="AudioStream" uid="uid://svqb3i5cdbar" path="res://assets/sound/Click.wav" id="2_oo6d2"]
+
+[node name="SoundFX" type="Node" unique_id=995682055]
+script = ExtResource("1_kan5h")
+
+[node name="AudioStreamPlayer_1" type="AudioStreamPlayer" parent="." unique_id=1187054287]
+stream = ExtResource("2_oo6d2")
+volume_db = 15.0
+
+[node name="AudioStreamPlayer_2" type="AudioStreamPlayer" parent="." unique_id=1304060723]
+volume_db = 15.0
+
+[node name="AudioStreamPlayer_3" type="AudioStreamPlayer" parent="." unique_id=459690849]
+volume_db = 15.0
+
+[node name="AudioStreamPlayer_4" type="AudioStreamPlayer" parent="." unique_id=292722310]
+volume_db = 15.0
+
+[node name="AudioStreamPlayer_5" type="AudioStreamPlayer" parent="." unique_id=1333978250]
+volume_db = 15.0

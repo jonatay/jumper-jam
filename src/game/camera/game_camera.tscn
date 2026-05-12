@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ca42a6h7a0ks7"]
 
-[ext_resource type="Script" uid="uid://cc0jxxn6t5cc6" path="res://src/game/game_objects/camera/game_camera.gd" id="1_70wwr"]
+[ext_resource type="Script" uid="uid://cc0jxxn6t5cc6" path="res://src/game/camera/game_camera.gd" id="1_70wwr"]
 
 [node name="GameCamera" type="Camera2D" unique_id=775189225]
 anchor_mode = 0

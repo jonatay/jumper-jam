@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dpnnu1u5cgdng"]
 
 [ext_resource type="Texture2D" uid="uid://dbel60q4g3wt0" path="res://assets/PNG/Ui/ScoreBox.png" id="1_33l8k"]
-[ext_resource type="Script" uid="uid://4v5wntv3t7i5" path="res://src/game/game_objects/hud/h_u_d.gd" id="1_rvych"]
+[ext_resource type="Script" uid="uid://4v5wntv3t7i5" path="res://src/game/hud/h_u_d.gd" id="1_rvych"]
 [ext_resource type="Texture2D" uid="uid://5cwi62nsbih3" path="res://assets/PNG/Ui/PauseBtn.png" id="2_rvych"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_rvych"]
@@ -41,7 +41,7 @@ offset_bottom = 85.0
 texture = ExtResource("1_33l8k")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="TopBar/ScoreBox" unique_id=1504883183]
+[node name="LblScore" type="Label" parent="TopBar/ScoreBox" unique_id=1504883183]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 24.0

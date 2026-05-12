@@ -5,6 +5,7 @@ signal new_game
 signal start_game
 signal reset_game
 
+
 @onready var title_screen: BaseScreen = $TitleScreen
 @onready var pause_screen: BaseScreen = $PauseScreen
 @onready var game_over_screen: BaseScreen = $GameOverScreen
@@ -35,18 +36,29 @@ func register_buttons() -> void:
 			button.clicked.connect(_on_screen_button_clicked)
 
 func _on_screen_button_clicked(button: ScreenButton) -> void:
-	print("Button clicked: ", button.name)
+	SoundFX.play_sound("CLICK")
+	UtlLogger.log_message("Button clicked: %s" % button.name)
 	match button.name:
 		"SBTitleStart":
 			change_screen(null)
 			await (get_tree().create_timer(0.5).timeout)
 			new_game.emit()
+		"SBTitleClose":
+			change_screen(null)
+			await (get_tree().create_timer(0.75).timeout)
+			get_tree().quit()
 		"SBPauseRestart":
-			pass
+			get_tree().paused = false
+			change_screen(null)
+			start_game.emit()
 		"SBPauseBack":
-			pass
+			get_tree().paused = false
+			change_screen(title_screen)
+			reset_game.emit()
 		"SBPauseClose":
-			pass
+			change_screen(null)
+			await (get_tree().create_timer(0.75).timeout)
+			get_tree().paused = false
 		"SBGameOverRestart":
 			change_screen(null)
 			await (get_tree().create_timer(0.5).timeout)
@@ -55,7 +67,7 @@ func _on_screen_button_clicked(button: ScreenButton) -> void:
 			change_screen(title_screen)
 			reset_game.emit()
 		_:
-			print("No action defined for button: ", button.name)
+			UtlLogger.log_message("No action defined for button: %s" % button.name)
 
 func _on_btn_toggle_console_pressed() -> void:
 	console_log.visible = not console_log.visible
@@ -79,3 +91,6 @@ func game_over(score: int, high_score: int) -> void:
 	lbl_best.text = "Best: %s" % UtlFunc.add_commas_to_number(high_score)
 	await (get_tree().create_timer(0.75).timeout)
 	change_screen(game_over_screen)
+
+func pause_game() -> void:
+	change_screen(pause_screen)

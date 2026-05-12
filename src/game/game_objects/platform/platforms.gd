@@ -5,7 +5,7 @@ var player: Player
 @export var platform_scenes: Array[PackedScene]
 @export var y_platform_spacing: int = 150
 @export var platform_x_range: int = 200
-@export var level_size: int = 50
+@export var level_size: int = 10
 
 @onready var viewport_size := get_viewport_rect().size
 @onready var start_platform_y: float = viewport_size.y - (y_platform_spacing * 2.0)
@@ -20,12 +20,16 @@ func _process(_delta: float) -> void:
 	if player:
 		var existing_size := levels_counter * y_platform_spacing * level_size
 		if player.position.y < start_platform_y - (existing_size) + viewport_size.y:
+			UtlLogger.log_message("Generating new level. Player Y: %s, Existing size: %s" % [player.position.y, existing_size])
+			UtlLogger.log_message("Last level idx: %s" % level_idx)
 			level_idx += 1
 			if level_idx >= platform_scenes.size():
 				level_idx = 0
+			UtlLogger.log_message("Current level idx: %s" % level_idx)
 			generate_level_platforms(level_idx)
 
 func start_level_generation() -> void:
+	level_idx = 0
 	generate_ground_platforms(level_idx)
 	generate_level_platforms(level_idx)
 

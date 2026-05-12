@@ -1,7 +1,13 @@
 extends Control
+class_name HUD
+
+signal pause_pressed
 
 @onready var top_bar_bg: ColorRect = $TopBarBG
 @onready var top_bar: Control = $TopBar
+@onready var lbl_score: Label = $TopBar/ScoreBox/LblScore
+
+var i_score: int
 
 func _ready() -> void:
 	var os_name = OS.get_name()
@@ -18,4 +24,9 @@ func _ready() -> void:
 		UtlLogger.log_message("Window size: " + str(DisplayServer.window_get_size()))
 
 func _on_tbhud_pause_pressed() -> void:
-	pass # Replace with function body.
+	pause_pressed.emit()
+
+
+func set_score(score: int) -> void:
+	i_score = score
+	lbl_score.text = "Score: " + UtlFunc.add_commas_to_number(i_score)

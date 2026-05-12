@@ -1,0 +1,22 @@
+[gd_resource type="AnimatedTexture" format=3 uid="uid://bupw6rhsw4ymc"]
+
+[ext_resource type="Texture2D" uid="uid://ba1ww77f5q4lj" path="res://assets/PNG/Background/01/Layer2.png" id="1_ojnlk"]
+[ext_resource type="Texture2D" uid="uid://d0usjg4i1qncw" path="res://assets/PNG/Background/02/Layer2.png" id="2_umco2"]
+[ext_resource type="Texture2D" uid="uid://dmapnac4ia1cl" path="res://assets/PNG/Background/03/Layer2.png" id="3_7u34b"]
+[ext_resource type="Texture2D" uid="uid://g2gaev01d7wi" path="res://assets/PNG/Background/05/Layer2.png" id="4_ko6j7"]
+[ext_resource type="Texture2D" uid="uid://b2c7r7jgikf5d" path="res://assets/PNG/Background/06/Layer2.png" id="5_rwsxa"]
+
+[resource]
+resource_local_to_scene = true
+frames = 6
+frame_0/texture = ExtResource("1_ojnlk")
+frame_0/duration = 30.0
+frame_1/texture = ExtResource("2_umco2")
+frame_1/duration = 30.0
+frame_2/texture = ExtResource("3_7u34b")
+frame_2/duration = 30.0
+frame_3/duration = 30.0
+frame_4/texture = ExtResource("4_ko6j7")
+frame_4/duration = 30.0
+frame_5/texture = ExtResource("5_rwsxa")
+frame_5/duration = 1.0

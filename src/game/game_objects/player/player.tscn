@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dlvn88tw06j43" path="res://assets/PNG/Characters/01/Idle.png" id="1_gxmba"]
 [ext_resource type="Texture2D" uid="uid://bdf81kj786ixy" path="res://assets/PNG/Characters/01/Jump.png" id="3_ro4s1"]
 [ext_resource type="FontFile" uid="uid://bm0l1l545ccj7" path="res://assets/font/Wendy_One/WendyOne-Regular.ttf" id="4_ro4s1"]
+[ext_resource type="AudioStream" uid="uid://dkxfoic85c1hk" path="res://assets/sound/Jump.wav" id="5_m0dmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0dmo"]
 size = Vector2(38, 14)
@@ -168,5 +169,8 @@ vertical_alignment = 1
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=610612024]
 rect = Rect2(-22, -8, 44, 11)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2034628704]
+stream = ExtResource("5_m0dmo")
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

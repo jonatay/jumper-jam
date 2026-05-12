@@ -18,4 +18,5 @@ func _exit_tree() -> void:
 
 func log_message(message: String) -> void:
 	if log_label:
+		print("LogEntry: ", message)
 		log_label.text += message + "\n"

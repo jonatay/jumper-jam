@@ -61,7 +61,8 @@ func _physics_process(_delta: float) -> void:
 
 func jump() -> void:
 	velocity.y = jump_velocity
-	UtlLogger.log_message("Jumped! Current height: %s" % UtlFunc.add_commas_to_number(int(-position.y)))
+	SoundFX.play_sound("JUMP")
+	# UtlLogger.log_message("Jumped! Current height: %s" % UtlFunc.add_commas_to_number(int(-position.y)))
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
@@ -69,6 +70,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 
 func die() -> void:
+	SoundFX.play_sound("FALL")
 	if not dead:
 		dead = true
 		collision_shape_2d.set_deferred("disabled", true)

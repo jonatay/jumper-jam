@@ -28,6 +28,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.6666667)
 
 [node name="Box" type="TextureRect" parent="." unique_id=81730944]
+process_mode = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

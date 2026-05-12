@@ -1,0 +1,24 @@
+[gd_resource type="AnimatedTexture" format=3 uid="uid://dr0dolva364rg"]
+
+[ext_resource type="Texture2D" uid="uid://vuagkndcflgo" path="res://assets/PNG/Background/01/Layer1.png" id="1_byseo"]
+[ext_resource type="Texture2D" uid="uid://bwxnv1ybdbx10" path="res://assets/PNG/Background/02/Layer1.png" id="2_23dyg"]
+[ext_resource type="Texture2D" uid="uid://bxkatb7unu5qd" path="res://assets/PNG/Background/03/Layer1.png" id="3_nkj8u"]
+[ext_resource type="Texture2D" uid="uid://b7nrn2rcrm8u6" path="res://assets/PNG/Background/04/Layer1.png" id="4_ho4w0"]
+[ext_resource type="Texture2D" uid="uid://cg37m24nvnq3u" path="res://assets/PNG/Background/05/Layer1.png" id="5_05307"]
+[ext_resource type="Texture2D" uid="uid://o3ufaijj4cni" path="res://assets/PNG/Background/06/Layer1.png" id="6_o3nqh"]
+
+[resource]
+resource_local_to_scene = true
+frames = 6
+frame_0/texture = ExtResource("1_byseo")
+frame_0/duration = 30.0
+frame_1/texture = ExtResource("2_23dyg")
+frame_1/duration = 30.0
+frame_2/texture = ExtResource("3_nkj8u")
+frame_2/duration = 30.0
+frame_3/texture = ExtResource("4_ho4w0")
+frame_3/duration = 30.0
+frame_4/texture = ExtResource("5_05307")
+frame_4/duration = 30.0
+frame_5/texture = ExtResource("6_o3nqh")
+frame_5/duration = 30.0

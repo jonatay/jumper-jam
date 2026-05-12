@@ -5,7 +5,23 @@ class_name Main
 @onready var game: Game = $Game
 
 func _ready() -> void:
+	DisplayServer.window_set_window_event_callback(_on_window_event)
+
 	screens.new_game.connect(game.new_game)
 	screens.start_game.connect(game.start_game)
 	game.game_over.connect(screens.game_over)
 	screens.reset_game.connect(game.reset_game)
+	game.game_paused.connect(screens.pause_game)
+
+func _on_window_event(event) -> void:
+	match event:
+		DisplayServer.WINDOW_EVENT_FOCUS_IN:
+			UtlLogger.log_message("Window focused")
+		DisplayServer.WINDOW_EVENT_FOCUS_OUT:
+			UtlLogger.log_message("Window unfocused")
+			if not screens.current_screen:
+				get_tree().paused = true
+				screens.pause_game()
+		DisplayServer.WINDOW_EVENT_CLOSE_REQUEST:
+			UtlLogger.log_message("Window close request")
+			get_tree().quit()

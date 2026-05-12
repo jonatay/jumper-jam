@@ -7,6 +7,7 @@ extends Area2D
 
 func _ready() -> void:
 	destroyer.position = Vector2(viewport_size.x / 2.0, viewport_size.y + 20)
+	print("destroyer position: ", destroyer.position)
 
 	var rs2d := RectangleShape2D.new()
 	rs2d.set_size(Vector2(viewport_size.x, 20))

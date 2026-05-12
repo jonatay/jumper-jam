@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ch1fgdsnvhw1y"]
+
+[ext_resource type="SpriteFrames" uid="uid://b1y7dmiis2lql" path="res://resources/coin_sprite_frames.tres" id="1_sujqg"]
+
+[node name="Collectable" type="Node2D" unique_id=1518753363]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=582628605]
+scale = Vector2(0.50420165, 0.50420165)
+sprite_frames = ExtResource("1_sujqg")
+autoplay = "default"
+frame_progress = 0.8284023
