@@ -7,7 +7,7 @@ var player: Player
 @export var platform_x_range: int = 200
 @export var level_size: int = 10
 
-@onready var viewport_size := get_viewport_rect().size
+@onready var viewport_size: Vector2 = get_viewport_rect().size
 @onready var start_platform_y: float = viewport_size.y - (y_platform_spacing * 2.0)
 
 var platform_width: int = 134
@@ -18,7 +18,7 @@ var level_idx: int = 0
 
 func _process(_delta: float) -> void:
 	if player:
-		var existing_size := levels_counter * y_platform_spacing * level_size
+		var existing_size: float = levels_counter * y_platform_spacing * level_size
 		if player.position.y < start_platform_y - (existing_size) + viewport_size.y:
 			UtlLogger.log_message("Generating new level. Player Y: %s, Existing size: %s" % [player.position.y, existing_size])
 			UtlLogger.log_message("Last level idx: %s" % level_idx)
@@ -37,17 +37,17 @@ func reset_level() -> void:
 	platform_counter = 0
 	levels_counter = 0
 	level_idx = 0
-	for child in get_children():
+	for child: Node in get_children():
 		if child is Platform:
 			child.queue_free()
 
 
 func generate_ground_platforms(platform_idx: int) -> void:
-	for x in range(- (platform_width + 2), int(viewport_size.x) + (platform_width + 2), platform_width + 2):
+	for x: int in range(- (platform_width + 2), int(viewport_size.x) + (platform_width + 2), platform_width + 2):
 		create_platform(platform_idx, Vector2(x, viewport_size.y - 62))
 
 func generate_level_platforms(platform_idx: int) -> void:
-	for i in range(level_size):
+	for i: int in range(level_size):
 		var platform_x: float = randf_range(0.0, viewport_size.x - platform_width)
 		var platform_y: float = start_platform_y - ((i + (levels_counter * level_size)) * y_platform_spacing)
 		create_platform(platform_idx, Vector2(platform_x, platform_y))
@@ -56,7 +56,7 @@ func generate_level_platforms(platform_idx: int) -> void:
 
 func create_platform(platform_idx: int, platform_position: Vector2) -> void:
 	assert(platform_idx >= 0 and platform_idx < platform_scenes.size(), "Platform index out of range.")
-	var platform_instance = platform_scenes[platform_idx].instantiate()
+	var platform_instance: Platform = platform_scenes[platform_idx].instantiate()
 	platform_instance.position = platform_position
 	add_child(platform_instance)
 	platform_counter += 1

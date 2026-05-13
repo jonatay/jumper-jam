@@ -4,24 +4,28 @@ class_name Screens
 signal new_game
 signal start_game
 signal reset_game
+signal purchase_skin
 
 
 @onready var title_screen: BaseScreen = $TitleScreen
 @onready var pause_screen: BaseScreen = $PauseScreen
 @onready var game_over_screen: BaseScreen = $GameOverScreen
+@onready var shop_screen: BaseScreen = $ShopScreen
 
 @onready var btn_toggle_console: TextureButton = $Debug/BtnToggleConsole
 @onready var console_log: Control = $Debug/ConsoleLog
 @onready var scroll_container: ScrollContainer = $Debug/ConsoleLog/ScrollContainer
-@onready var scrollbar = scroll_container.get_v_scroll_bar()
+@onready var scrollbar: VScrollBar = scroll_container.get_v_scroll_bar()
 @onready var lbl_score: Label = $GameOverScreen/Box/LblScore
 @onready var lbl_best: Label = $GameOverScreen/Box/LblBest
+@onready var lbl_version: Label = $Debug/LblVersion
 
 var current_screen: BaseScreen = null
 
-var max_scroll_length = 0
+var max_scroll_length: float = 0.0
 
 func _ready() -> void:
+	lbl_version.text = ProjectSettings.get_setting("application/config/version")
 	console_log.visible = false
 	btn_toggle_console.pressed.connect(_on_btn_toggle_console_pressed)
 	scrollbar.changed.connect(handle_scrollbar_changed)
@@ -30,8 +34,8 @@ func _ready() -> void:
 	change_screen(title_screen)
 
 func register_buttons() -> void:
-	var buttons = get_tree().get_nodes_in_group("screen_buttons")
-	for button in buttons:
+	var buttons: Array[Node] = get_tree().get_nodes_in_group("screen_buttons")
+	for button: Node in buttons:
 		if button is ScreenButton:
 			button.clicked.connect(_on_screen_button_clicked)
 
@@ -47,6 +51,8 @@ func _on_screen_button_clicked(button: ScreenButton) -> void:
 			change_screen(null)
 			await (get_tree().create_timer(0.75).timeout)
 			get_tree().quit()
+		"SBTitleShop":
+			change_screen(shop_screen)
 		"SBPauseRestart":
 			get_tree().paused = false
 			change_screen(null)
@@ -66,6 +72,11 @@ func _on_screen_button_clicked(button: ScreenButton) -> void:
 		"SBGameOverBack":
 			change_screen(title_screen)
 			reset_game.emit()
+		"SBShopPurchase":
+			purchase_skin.emit()
+			change_screen(title_screen)
+		"SBShopBack":
+			change_screen(title_screen)
 		_:
 			UtlLogger.log_message("No action defined for button: %s" % button.name)
 
@@ -75,7 +86,7 @@ func _on_btn_toggle_console_pressed() -> void:
 func handle_scrollbar_changed() -> void:
 	if max_scroll_length != scrollbar.max_value:
 		max_scroll_length = scrollbar.max_value
-	scroll_container.scroll_vertical = max_scroll_length
+	scroll_container.scroll_vertical = round(max_scroll_length)
 
 func change_screen(new_screen: BaseScreen) -> void:
 	if current_screen:

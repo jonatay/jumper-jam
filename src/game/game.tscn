@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://kstu3q3yjl60" path="res://src/game/game_objects/platform/platform_05.tscn" id="9_etvrb"]
 [ext_resource type="PackedScene" uid="uid://c61vne7qm0fr6" path="res://src/game/game_objects/platform/platform_06.tscn" id="10_xniy2"]
 [ext_resource type="Texture2D" uid="uid://dw0bwfwnji4pc" path="res://assets/PNG/Background/06/Ground.png" id="12_htx8b"]
-[ext_resource type="PackedScene" uid="uid://dpnnu1u5cgdng" path="res://src/game/hud/h_u_d.tscn" id="17_cvpot"]
+[ext_resource type="PackedScene" uid="uid://dpnnu1u5cgdng" path="res://src/game/hud/hud.tscn" id="17_cvpot"]
 [ext_resource type="PackedScene" uid="uid://ch1fgdsnvhw1y" path="res://src/game/game_objects/collectable/collectable.tscn" id="17_l5jlt"]
 
 [node name="Game" type="Node2D" unique_id=1953146400]

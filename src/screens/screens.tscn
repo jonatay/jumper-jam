@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dljbtmf1cdcnq" path="res://assets/textures/ui/gear.png" id="2_hie14"]
 [ext_resource type="PackedScene" uid="uid://dll8n75yhot40" path="res://src/screens/title_screen.tscn" id="3_5o4du"]
 [ext_resource type="PackedScene" uid="uid://dt0lbsfvjv5mv" path="res://src/screens/game_over_screen.tscn" id="4_robo6"]
+[ext_resource type="PackedScene" uid="uid://ch8dfw0ns8f0h" path="res://src/screens/shop_screen.tscn" id="5_7g2sx"]
 
 [node name="Screens" type="CanvasLayer" unique_id=2144420571]
 process_mode = 3
@@ -12,13 +13,12 @@ layer = 11
 script = ExtResource("1_mmeda")
 
 [node name="TitleScreen" parent="." unique_id=575566824 instance=ExtResource("3_5o4du")]
-visible = false
 
 [node name="PauseScreen" parent="." unique_id=816577384 instance=ExtResource("2_afsso")]
-visible = false
 
 [node name="GameOverScreen" parent="." unique_id=1411894215 instance=ExtResource("4_robo6")]
-visible = false
+
+[node name="ShopScreen" parent="." unique_id=1273940230 instance=ExtResource("5_7g2sx")]
 
 [node name="Debug" type="Control" parent="." unique_id=30307900]
 z_index = 100
@@ -94,3 +94,16 @@ offset_bottom = 60.0
 grow_vertical = 0
 scale = Vector2(0.4, 0.4)
 texture_normal = ExtResource("2_hie14")
+
+[node name="LblVersion" type="Label" parent="Debug" unique_id=97920792]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0.0.0"

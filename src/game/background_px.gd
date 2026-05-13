@@ -6,7 +6,7 @@ extends Node2D
 @onready var middle_bg: Sprite2D = $Layer2/MiddleBG
 @onready var layer_3: Parallax2D = $Layer3
 @onready var foreground_bg: Sprite2D = $Layer3/ForegroundBG
-@onready var viewport_size := get_viewport_rect().size
+@onready var viewport_size: Vector2 = get_viewport_rect().size
 
 func _ready() -> void:
 	futherest_bg.scale = get_px_sprite_scale(futherest_bg)
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 
 func get_px_sprite_scale(sprite: Sprite2D) -> Vector2:
-	var tex := sprite.get_texture()
-	var width := tex.get_width()
-	var res := viewport_size.x / width
+	var tex: Texture2D = sprite.get_texture()
+	var width: int = tex.get_width()
+	var res: float = viewport_size.x / width
 	return Vector2(res, res)

@@ -8,12 +8,12 @@ func _ready() -> void:
 	if console_log:
 		log_label = console_log.find_child("LblLog")
 		if log_label:
-			var sys_datetime = Time.get_datetime_dict_from_system()
+			var sys_datetime: Dictionary = Time.get_datetime_dict_from_system()
 			log_label.text = "Start Log at %02d:%02d:%02d\n" % [sys_datetime.hour, sys_datetime.minute, sys_datetime.second]
 
 func _exit_tree() -> void:
 	if log_label:
-		var sys_datetime = Time.get_datetime_dict_from_system()
+		var sys_datetime: Dictionary = Time.get_datetime_dict_from_system()
 		log_label.text += "End Log at %02d:%02d:%02d\n" % [sys_datetime.hour, sys_datetime.minute, sys_datetime.second]
 
 func log_message(message: String) -> void:

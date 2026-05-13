@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="jumper-jam"
+config/version="0.70.515"
 run/main_scene="uid://ucd76hrrynhg"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
@@ -43,7 +44,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/sound_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/android_emulator_launcher/plugin.cfg", "res://addons/data_table/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/version_bumper/plugin.cfg")
 
 [global_group]
 
@@ -100,3 +101,7 @@ textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
+
+[version_bumper]
+
+display_mode=0

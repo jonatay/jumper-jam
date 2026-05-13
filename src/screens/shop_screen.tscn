@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://ch8dfw0ns8f0h"]
+
+[ext_resource type="Script" uid="uid://84eqkymct0xh" path="res://src/screens/base_screen.gd" id="1_etxql"]
+[ext_resource type="Texture2D" uid="uid://tgm12parcq3k" path="res://assets/PNG/Ui/Box01.png" id="2_bjxux"]
+[ext_resource type="PackedScene" uid="uid://ct3toyphttn1q" path="res://src/screens/screen_button.tscn" id="3_fqvoy"]
+[ext_resource type="Texture2D" uid="uid://c2oviqj3731la" path="res://assets/PNG/Ui/Closebtn2.png" id="4_i8nyk"]
+[ext_resource type="Texture2D" uid="uid://cxbggw2gy5cmk" path="res://assets/PNG/Ui/Box04.png" id="5_dmcoo"]
+[ext_resource type="Texture2D" uid="uid://b7cyrs4htgee7" path="res://assets/PNG/Characters/08/Idle.png" id="6_xo23f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jl6ok"]
+font_size = 75
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tyywq"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="ShopScreen" type="Control" unique_id=1273940230]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_etxql")
+metadata/_custom_type_script = "uid://84eqkymct0xh"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=772864307]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -239.0
+offset_top = -376.99603
+offset_right = 239.0
+offset_bottom = 358.97235
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bjxux")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=270072488]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -189.69904
+offset_top = 18.996033
+offset_right = 189.69904
+offset_bottom = 135.99603
+grow_horizontal = 2
+text = "The Shop"
+label_settings = SubResource("LabelSettings_jl6ok")
+horizontal_alignment = 1
+
+[node name="SBShopBack" parent="TextureRect" unique_id=1033950081 instance=ExtResource("3_fqvoy")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -37.0
+offset_top = -8.003967
+offset_right = 7.305237
+offset_bottom = 34.003967
+grow_horizontal = 0
+texture_normal = ExtResource("4_i8nyk")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SBShopPurchase" parent="TextureRect" unique_id=1492598137 instance=ExtResource("3_fqvoy")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -123.0
+offset_top = -135.74326
+offset_right = 123.0
+offset_bottom = 135.74326
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("5_dmcoo")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/SBShopPurchase" unique_id=477281209]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -127.98816
+offset_right = 91.0
+offset_bottom = 86.53223
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_xo23f")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect/SBShopPurchase" unique_id=761193276]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -71.5
+offset_top = -67.731445
+offset_right = 71.5
+offset_bottom = -22.731445
+grow_horizontal = 2
+grow_vertical = 0
+text = "New Skin"
+label_settings = SubResource("LabelSettings_tyywq")

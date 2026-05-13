@@ -1,8 +1,8 @@
 extends Node
 
-@onready var audio_stream_players: Array[Node] = get_children().filter(func(n) -> bool: return n is AudioStreamPlayer)
+@onready var audio_stream_players: Array[Node] = get_children().filter(func(n: Node) -> bool: return n is AudioStreamPlayer)
 
-var sounds = {
+var sounds: Dictionary = {
 	"CLICK": preload("uid://svqb3i5cdbar"),
 	"FALL": preload("uid://cv2o5c1kc5u0s"),
 	"JUMP": preload("uid://dkxfoic85c1hk"),
@@ -22,9 +22,9 @@ func _input(event: InputEvent) -> void:
 
 func play_sound(sound_name: String) -> void:
 	if sound_name in sounds:
-		var sound = sounds[sound_name]
-		SoundManager.play_sound_effect(sound)
-		# SoundManager.play_ui_sound(click)
+		var sound: AudioStream = sounds[sound_name]
+		# SoundManager.play_sound_effect(sound)
+		SoundManager.play_ui_sound(sound)
 		# SoundManager.play_ambient_sound(wind)
 		# SoundManager.play_music(song)
 

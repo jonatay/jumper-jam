@@ -6,7 +6,7 @@ static func add_commas_to_number(input_number: int) -> String:
 	var output_string: String = ""
 	var last_index: int = number_as_string.length() - 1
 	# For each digit in the number...
-	for index in range(number_as_string.length()):
+	for index: int in range(number_as_string.length()):
 		# add that digit to the output string, and then...
 		output_string = output_string + number_as_string.substr(index, 1)
 		# if the index is at the thousandths, millions, billionths place, etc.

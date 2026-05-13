@@ -3,7 +3,7 @@ class_name GameCamera
 
 var player: Player
 
-@onready var vp_rect := get_viewport_rect()
+@onready var vp_rect: Rect2 = get_viewport_rect()
 @onready var y_offset: float = vp_rect.size.y / 2
 
 var y_min: float = 0.0
