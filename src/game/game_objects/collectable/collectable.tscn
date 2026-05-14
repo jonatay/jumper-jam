@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ch1fgdsnvhw1y"]
 
-[ext_resource type="SpriteFrames" uid="uid://b1y7dmiis2lql" path="res://resources/coin_sprite_frames.tres" id="1_sujqg"]
+[ext_resource type="SpriteFrames" uid="uid://b1y7dmiis2lql" path="res://resource/coin_sprite_frames.tres" id="1_sujqg"]
 
 [node name="Collectable" type="Node2D" unique_id=1518753363]
 

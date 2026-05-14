@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dll8n75yhot40" path="res://src/screens/title_screen.tscn" id="3_5o4du"]
 [ext_resource type="PackedScene" uid="uid://dt0lbsfvjv5mv" path="res://src/screens/game_over_screen.tscn" id="4_robo6"]
 [ext_resource type="PackedScene" uid="uid://ch8dfw0ns8f0h" path="res://src/screens/shop_screen.tscn" id="5_7g2sx"]
+[ext_resource type="PackedScene" uid="uid://dghxctf6bb3un" path="res://src/screens/char_skin_screen.tscn" id="6_ljq1f"]
 
 [node name="Screens" type="CanvasLayer" unique_id=2144420571]
 process_mode = 3
@@ -19,6 +20,9 @@ script = ExtResource("1_mmeda")
 [node name="GameOverScreen" parent="." unique_id=1411894215 instance=ExtResource("4_robo6")]
 
 [node name="ShopScreen" parent="." unique_id=1273940230 instance=ExtResource("5_7g2sx")]
+
+[node name="CharSkinScreen" parent="." unique_id=16175142 instance=ExtResource("6_ljq1f")]
+visible = false
 
 [node name="Debug" type="Control" parent="." unique_id=30307900]
 z_index = 100

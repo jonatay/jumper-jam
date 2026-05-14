@@ -43,8 +43,8 @@ func _physics_process(_delta: float) -> void:
 	if !dead:
 		if use_acceletometer:
 			accel_vector = Input.get_accelerometer()
-			UtlLogger.log_message("Accelerometer: %s" % accel_vector)
-		if accel_vector != Vector3.ZERO:
+			# UtlLogger.log_message("Accelerometer.x: %s" % accel_vector.x)
+		if accel_vector.x != 0.0:
 			velocity.x = accel_vector.x * accelerometer_speed
 		else:
 			input_vector = Input.get_axis("move_left", "move_right")
