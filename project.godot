@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="jumper-jam"
-config/version="0.71.0"
+config/version="0.71.2"
 run/main_scene="uid://ucd76hrrynhg"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
@@ -44,7 +44,7 @@ window/vsync/vsync_mode=0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/android_emulator_launcher/plugin.cfg", "res://addons/data_table_plugin/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/version_bumper/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotGooglePlayBilling/plugin.cfg", "res://addons/android_emulator_launcher/plugin.cfg", "res://addons/data_table_plugin/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/version_bumper/plugin.cfg")
 
 [global_group]
 

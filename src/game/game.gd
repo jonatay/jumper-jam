@@ -110,6 +110,8 @@ func _on_hud_pause_pressed() -> void:
 	game_paused.emit()
 
 func unlock_new_skin() -> void:
-	new_skin_unlocked = true
-	if player:
-		player.use_new_skin()
+	if not new_skin_unlocked:
+		UtlLogger.log_message("New skin unlocked!")
+		new_skin_unlocked = true
+		if player:
+			player.use_new_skin()
